@@ -16,12 +16,12 @@ function Sidebar(){
   return(
     <div className="sidebar">
         <img src="https://cdn-icons-png.flaticon.com/512/725/725335.png" className="icon" alt="hi5 Icon" />
-        <SidebarLink text="Home" Icon={HomeOutlinedIcon} />
+        <SidebarLink text="Home" Icon={HomeOutlinedIcon} href="/Home"/>
         <SidebarLink text="Personalize" Icon={ColorLensOutlinedIcon}/>
         <SidebarLink text="Notifications" Icon={NotificationsNoneIcon} />
         <SidebarLink text="Messages" Icon={MailOutlineIcon}/>
-        <SidebarLink text="Profile" Icon={PermIdentityIcon}/>
-        <SidebarLink  text="Logout" Icon={LogoutIcon}/>
+        <SidebarLink text="Profile" Icon={PermIdentityIcon} href="/profile"/>
+        <SidebarLink  text="Logout" Icon={LogoutIcon} href="/"/>
         
        
         <button className="b1">Say Hi</button>
