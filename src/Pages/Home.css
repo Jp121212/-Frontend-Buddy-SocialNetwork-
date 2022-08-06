@@ -1,1 +1,24 @@
 
+.contenedorFlex{
+    display: flex;
+}
+.ContenedorMain{
+ border: 1px salmon solid;
+ width: 50%;
+ height: 100vh;
+}
+
+.Contenedor1{
+    border: 1px salmon solid;
+    width: 25%;
+    height: 100vh;
+    }
+
+
+
+.Contenedor3{
+    border: 1px salmon solid;
+    width: 25%;
+    height: 100vh;
+    
+}

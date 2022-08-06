@@ -1,0 +1,30 @@
+.link{
+    display: flex;
+    align-items: cover;
+    cursor: pointer;
+    border-radius: 30px;
+    padding: 1px;
+  }
+  .link:hover{
+    background-color: #ebebeb;
+    width: 80%;
+  }
+  .link > h1{
+    padding: 10px;
+    color: black;
+    font-weight: 300;
+    font-size: 15px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    margin-right: 10px;
+  }
+
+  .link > h1:hover{
+        color: black;
+    }
+.link > .MuiSvgIcon-root {
+        padding: 20px;
+      }  
+
+    .icon1{
+        color: #dd8411;
+    }
