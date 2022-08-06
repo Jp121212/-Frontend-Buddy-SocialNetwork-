@@ -4,23 +4,39 @@ import { useState, useEffect } from 'react';
 import "./Home.css"
 import React from 'react';
 import Sidebar from '../Components/Sidebar';
+import Avatar from '../Components/Avatar';
+import CircularColor from '../Components/circularprogress';
 
 
 
-const Estudiantes = () => {
-  const [Estudiante, setEstudiante] = React.useState(null);
+
+const User = () => {
+  const [User, setUser] = React.useState(null);
+  const [Users, setUsers] = React.useState(null);
   const [EstudianteActivo, setEstudianteActivo] = React.useState(null);
   const [favoritos, setFavoritos] = React.useState(JSON.parse(localStorage.getItem('favoritos')));
 
    React.useEffect(() => {
-     if(!Estudiante){
-       axios.get(`http://localhost:5000/users`)
+     if(!User){
+       axios.get(`http://localhost:5000/user/1`)
          .then((res) => {
-           setEstudiante(res.data)
+           setUser(res.data)
           console.log(res.data)
         })
     }
    }, [])
+
+   React.useEffect(() => {
+    if(!Users){
+      axios.get(`http://localhost:5000/users`)
+        .then((res) => {
+          setUsers(res.data)
+         console.log(res.data)
+       })
+   }
+  }, [])
+
+   
 
   // const manejarClickLista = (id) => {
   //   setEstudianteActivo(Estudiante.find((el) => el.id === id));
@@ -29,8 +45,26 @@ const Estudiantes = () => {
   return(
     <div className='contenedorFlex' >
       <div className='Contenedor1'>
-        <Sidebar/>
+        <div className='float'>
+          <Sidebar/><div className='abajo'>
+        {
+            User ?
+            User.map((u,i)=>{ 
+              return(
+                <div key={i}>
+                  <Avatar pop={u}/>
+                
+                </div>
+              ) 
+
+            }):<CircularColor/>
+          }
+        </div>
+        </div>
+        
+        
       </div>
+     
       <div className='ContenedorMain'>
 
       </div>
@@ -41,4 +75,4 @@ const Estudiantes = () => {
     </div>
   );
 }
-export default Estudiantes;
+export default User;

@@ -1,10 +1,9 @@
 .sidebar{
-    
     width: 150px;
     min-width: 250px;
     padding: 20px 20px;
-    float: right;
     box-shadow: 0 0 6px hsl(210 14% 90%);
+    
   }
 
 .icon{
@@ -24,3 +23,21 @@
     color: white;
     padding: 15px 80px;
 }
+
+
+
+.p1{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: 50;
+    color: #dd8411;
+    font-size: 15px;
+}
+
+.p2{
+  margin: auto;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: 100;
+  color: #bbbbbb;
+  font-size: 12px;
+  }
+  
