@@ -32,25 +32,25 @@ class Login extends React.Component {
     }
 
     manejadorBoton=()=>{
-        let url = ApiUrl+"/users";
-        axios.post(url,this.state.form)
-        .then(res=>{
-          console.log(res);
-        })
+        <a href="/home"></a>
     }
 
     render() {
         return (
         <React.Fragment>
+            <body className="html">
             <div className="wrapper fadeInDown">
                 <div id="formContent">
                 <div className="fadeIn first">
                 <img src="https://cdn-icons-png.flaticon.com/512/725/725335.png" id="icon" alt="User Icon" />
                 </div>
                 <form onSubmit={this.manejadorSubmit}>
-                <input type="text" id="email" className="fadeIn second" name="email" placeholder="email" onChange={this.manejadorChange}/>
+                <input type="email" id="email" className="fadeIn second" name="email" placeholder="email" onChange={this.manejadorChange}/>
                 <input type="password" id="password" className="fadeIn third" name="password" placeholder="password"  onChange={this.manejadorChange}/>
-                <input type="submit" className="fadeIn fourth" value="Log in" onClick={this.manejadorBoton}/>
+                <a href="/home">
+                  <input type="submit" className="fadeIn fourth" value="Log in"/>
+                </a>
+               
                 </form>
                 <div id="formFooter">
                 <a className="underlineHover" href="/register">Register</a> <br></br>
@@ -58,6 +58,7 @@ class Login extends React.Component {
                 </div>
               </div>
            </div>
+           </body>
         </React.Fragment>
     )}
 };

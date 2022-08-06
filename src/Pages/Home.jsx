@@ -1,6 +1,10 @@
 import logo from '../logo.svg';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
+import "./Home.css"
+
+
+
 
 const App = () => {
 
