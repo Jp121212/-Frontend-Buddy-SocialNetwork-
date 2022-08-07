@@ -3,8 +3,9 @@
     min-width: 250px;
     padding: 20px 20px;
     box-shadow: 0 0 6px hsl(210 14% 90%);
-    
-  }
+    margin-right: 4px;
+   
+      }
 
 .icon{
  width: 60px;
@@ -24,6 +25,12 @@
     padding: 15px 80px;
 }
 
+.avatar1{
+  width: 60px;
+  height: 60px;
+  margin-right: 4px;
+  
+}
 
 
 .p1{

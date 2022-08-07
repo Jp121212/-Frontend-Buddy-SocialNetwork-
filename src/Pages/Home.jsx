@@ -6,7 +6,7 @@ import React from 'react';
 import Sidebar from '../Components/Sidebar';
 import Avatar from '../Components/Avatar';
 import CircularColor from '../Components/circularprogress';
-
+import Post from './Post.jsx';
 
 
 
@@ -18,7 +18,7 @@ const User = () => {
 
    React.useEffect(() => {
      if(!User){
-       axios.get(`http://localhost:5000/user/1`)
+       axios.get(`http://localhost:5000/user/2`)
          .then((res) => {
            setUser(res.data)
           console.log(res.data)
@@ -61,12 +61,10 @@ const User = () => {
           }
         </div>
         </div>
-        
-        
       </div>
      
       <div className='ContenedorMain'>
-
+        <Post/>
       </div>
       <div className='Contenedor3'>
 

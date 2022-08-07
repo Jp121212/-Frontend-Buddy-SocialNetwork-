@@ -4,6 +4,7 @@
     cursor: pointer;
     border-radius: 30px;
     padding: 1px;
+    color: white;
   }
   .link:hover{
     background-color: #ebebeb;
@@ -11,7 +12,7 @@
   }
   .link > h1{
     padding: 10px;
-    color: black;
+    color: rgb(255, 255, 255);
     font-weight: 300;
     font-size: 15px;
     font-family: Verdana, Geneva, Tahoma, sans-serif;

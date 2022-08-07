@@ -1,0 +1,139 @@
+.tweetBox {
+    padding-bottom: 10px;
+    border-bottom: 8px solid var(--twitter-background);
+    padding-right: 10px;
+  }
+  
+  .tweetBox > form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .tweetBox__input {
+    padding: 20px;
+    display: flex;
+  }
+  
+  .tweetBox__input > input {
+    flex: 1;
+    margin-left: 20px;
+    font-size: 20px;
+    border: none;
+  }
+  
+  .tweetBox__imageInput {
+    border: none;
+    padding: 10px;
+  }
+  
+  .tweetBox__tweetButton {
+    background-color: var(--twitter-color) !important;
+    border: none !important;
+    color: white !important;
+    font-weight: 900 !important;
+    text-transform: inherit !important;
+    border-radius: 30px !important;
+    width: 80px;
+    height: 40px !important;
+    margin-top: 20px !important;
+    margin-left: auto !important;
+  }
+
+  .S{
+    padding: 35px;
+    font-size: 20px;
+    padding-left: 10px;
+    border: #cececd solid 1px;
+
+  }
+
+  .icon1{
+    width: 30px;
+    height: 30px;
+    float: left;  
+  }
+
+  .input3{
+     height: 40px;
+     float: left;
+  }
+
+  .f{
+     
+     height: 200px;
+     width: 100vh;
+     float: left;
+  }
+
+  .s{
+    height: 10px;
+    font-size: 10px;
+  }
+
+  .b5{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    background-color: #000000;
+    border-radius: 5px;
+    margin-left: 10px;
+    margin-bottom: 10px;
+    border: none;
+    font-size: 14px;
+    color: white;
+    padding: 30px 40px;
+  }
+
+  .flex{
+    display: flex;
+    flex-direction: row;
+    height: 100px;
+    width: 100vh;
+  }
+
+  .border{
+    
+    width: 100%;
+    height: 100%;
+  }
+
+  .avatar{
+    width: 100px;
+    height: 100px;
+    margin-left: 10px;
+    margin-top: 10px;
+  }
+
+  .avatar11{
+    width: 80px;
+    height: 80px;
+    margin-left: 10px;
+  }
+
+  .input4{
+    height: 50px;
+  }
+
+  .Scroll{
+    height: 75vh;
+    overflow-y: scroll;
+    border: #cececd solid 1px;
+  }
+
+  .form1{
+    height: 100px;
+    width: 1000px;
+  }
+
+  .p21{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: 100;
+    color: #bbbbbb;
+    font-size: 12px;
+    margin-left: 15px;
+    padding-left: 15px
+  }
+
+  .flex1{
+    display: flex;
+    flex-direction: row;
+    
+  }

@@ -3,14 +3,14 @@
     display: flex;
 }
 .ContenedorMain{
- border: 1px salmon solid;
+ 
  width: 50%;
  height: 100vh;
  ;
 }
 
 .Contenedor1{
-    border: 1px salmon solid;
+    
     width: 25%;
     height: 100vh;
     }
@@ -18,7 +18,7 @@
 
 
 .Contenedor3{
-    border: 1px salmon solid;
+   
     width: 25%;
     height: 100vh;
     
@@ -35,7 +35,8 @@
     border-radius: 10px;
     margin-top: 230px;
     height: 5vh;
-    background-color: white;
+    margin-right: 4px;
+    background-color: rgb(0, 0, 0);
     box-shadow: 0 0 6px hsl(210 14% 90%);
     padding: 10px;
 }
