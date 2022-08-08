@@ -106,8 +106,27 @@ export default function RecipeReviewCard(props) {
           <Dialog pop1={props.pop1}/>
         </IconButton>
        
-      </CardActions>
+      </CardActions> 
+      <Card>
+      <CardContent>
+      <Typography padding={3} fontSize={14} fontFamily={'Verdana, Geneva, Tahoma, sans-serif'} variant="body2" color="text.secondary">
+            {
+              u.comments.map((u,i)=>{
+                return(
+                  <div key={i}>
+                    <Typography padding={3} fontSize={14} fontFamily={'Verdana, Geneva, Tahoma, sans-serif'} variant="body2" color="text.secondary">
+                      {u.content}
+                    </Typography>
+                  </div>
+                )
+              })
+            }
+        </Typography>
+      </CardContent>
+      </Card>
     </Card>
+     
+
 
                 </div>
               )

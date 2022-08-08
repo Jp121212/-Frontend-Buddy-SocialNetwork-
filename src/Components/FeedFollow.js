@@ -19,7 +19,7 @@ import Dialog from './Dialog.js';
 
 
 export default function RecipeReviewCard1(props) {
-  console.log(props)
+  console.log('Prueba',props)
   
  
 
@@ -66,7 +66,24 @@ export default function RecipeReviewCard1(props) {
                       </IconButton>
        
                       </CardActions>
-                    
+                      <Card>
+                      {/* <CardContent>
+                      <Typography padding={3} fontSize={14} fontFamily={'Verdana, Geneva, Tahoma, sans-serif'} variant="body2" color="text.secondary">
+                            {
+                              el.comments.map((u,i)=>{
+                                return(
+                                  <div key={i}>
+                                    <Typography padding={3} fontSize={14} fontFamily={'Verdana, Geneva, Tahoma, sans-serif'} variant="body2" color="text.secondary">
+                                      
+                                      {u.content}
+                                    </Typography>
+                                  </div>
+                                )
+                              })
+                            }
+                        </Typography>
+                      </CardContent> */}
+      </Card>
                   </Card> 
                  
                   </div>
