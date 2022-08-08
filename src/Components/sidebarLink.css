@@ -30,3 +30,19 @@
         color: #dd8411;
     }
     
+
+
+  .p10{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: 100;
+    color: #dd8411;
+    font-size: 12px;
+  }
+
+  .p11{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: 100;
+    color: #bbbbbb;
+    margin: auto;
+    font-size: 8px;
+  }

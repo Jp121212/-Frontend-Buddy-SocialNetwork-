@@ -105,7 +105,7 @@
   .avatar11{
     width: 80px;
     height: 80px;
-    margin-left: 10px;
+    margin-left: 1px;
   }
 
   .input4{
@@ -118,9 +118,38 @@
     border: #cececd solid 1px;
   }
 
+  
+.Scroll::-webkit-scrollbar {
+  -webkit-appearance: none;
+}
+
+.Scroll::-webkit-scrollbar:vertical {
+  width:5px;
+}
+
+.Scroll::-webkit-scrollbar-button:increment,.contenedor::-webkit-scrollbar-button {
+  display: none;
+} 
+
+.Scroll::-webkit-scrollbar:horizontal {
+  height: 10px;
+}
+
+.Scroll::-webkit-scrollbar-thumb {
+  background-color: #ffffff;
+  border-radius: 20px;
+  border: 2px solid #f1f2f3;
+}
+
+.Scroll::-webkit-scrollbar-track {
+  border-radius: 10px;  
+}
+
+
+
   .form1{
     height: 100px;
-    width: 1000px;
+    width: 740px;
   }
 
   .p21{

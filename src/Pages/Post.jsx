@@ -3,18 +3,20 @@ import Avatar1 from '../Components/Avatar1';
 import axios from "axios";
 import Button from "@mui/material/Button";
 import "./post.css"
-
- 
+import Feed from '../Components/Feed';
+import Alert from '@mui/material/Alert'; 
 
 
 const App = (props) => {
     const [datos, setDatos] = React.useState(null);
-    const [asistentes, setAsistentes] = React.useState(null);
+    const [userss, setuserss] = React.useState(null);
     const [mensaje, setMensaje] = React.useState(null);
     const [fetched, setFetched] = React.useState(false);
     const [User, setUser] = React.useState(null);
     const [Users, setUsers] = React.useState(null);
-
+    const [Post, setPost] = React.useState(null);
+    const [Posts, setPosts] = React.useState(null);
+    
    
     React.useEffect(() => {
         if(!User){
@@ -36,6 +38,23 @@ const App = (props) => {
         
       }, [Users, User]);
 
+      React.useEffect(() => {
+        if(!Post){
+          axios.get("http://127.0.0.1:5000/user/post/2")
+            .then((data)=> {
+              setPost(data.data.reverse());
+            })
+            .catch((err)=> {
+              console.error(err);
+            })
+           
+        }
+       
+        
+      }, [Posts, Post]);
+       
+
+     
 
 
 
@@ -62,10 +81,10 @@ const App = (props) => {
     };
   
     React.useEffect(() => {
-      if(!asistentes){
+      if(!userss){
         axios.get("http://127.0.0.1:5000/post")
           .then((data)=> {
-            setAsistentes(data.data);
+            setuserss(data.data);
           })
           .catch((err)=> {
             console.error(err);
@@ -77,8 +96,8 @@ const App = (props) => {
           mensaje: `Se creo asistente con exito`,
         });
       }
-      console.log(asistentes)
-    }, [datos, asistentes]);
+      console.log(userss)
+    }, [datos, userss]);
   
     const postAPI = (data, callback) => {
       // const finalData = JSON.stringify(data);
@@ -96,8 +115,7 @@ const App = (props) => {
   
     const handleSubmit = () => {
       if(datos==null){
-        console.log("no hay datos")
-        alert("Porfavor asegurate de llenar el post")
+        alert("No se puede enviar un mensaje vacio")
 
       }else{
         postAPI(datos, setDatos);
@@ -149,7 +167,19 @@ const App = (props) => {
         
         </div>
         <div className="Scroll">
+        <p className='p22'>Your Post hi5</p>
+          {
 
+            Post ?
+            Post.map((u,i)=>{
+              return(
+                <div key={i}>
+                 <Feed  pop1={u}/>
+                </div>
+              )
+            }):"cargando"
+          }
+      
         </div>
 
         </div>
