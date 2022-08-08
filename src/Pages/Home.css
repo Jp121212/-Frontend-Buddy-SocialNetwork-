@@ -73,9 +73,10 @@
 
 .abajo1{
     width: 100%;
-    height: 5vh;
+    height: 50%;
     margin-right: 4px;
     padding: 10px;
+    overflow-y: scroll;
 }
 
 .p23{

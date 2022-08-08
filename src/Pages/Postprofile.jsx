@@ -67,7 +67,7 @@ const App = (props) => {
          key: 'value'
       };
        if(!userss){
-       axios.get(`https://h5bd.herokuapp.com/user/post/${id}`, config, bodyParameters).
+       axios.get(`http://localhost:5000/user/post/${id}`, config, bodyParameters).
        then((data)=> {
          setuserss(data.data);
        }).catch((err)=> {
@@ -106,7 +106,7 @@ const App = (props) => {
       }
        console.log({ data });
        axios
-         .post("https://h5bd.herokuapp.com/post", data, config, bodyParameters)
+         .post("http://127.0.0.1:5000/post", data, config, bodyParameters)
          .then((res) => {
            callback(null);
            setFetched(true);
@@ -137,10 +137,8 @@ const App = (props) => {
       <div className="App">
         
         <div>
-        <div className="S"> 
-        <div className="flex1">
-            <p className="p21">Home</p><img className="icon1" src="https://www.rawshorts.com/freeicons/wp-content/uploads/2017/01/orange_repicthousebase_1484336388.png"></img>
-        </div>
+        <div className="S2"> 
+        
         
          <div className="tweetBox__input"> 
             <div className="flex">
@@ -157,12 +155,7 @@ const App = (props) => {
                         }):"cargando"
                     }
                 </div>
-                <div className="border">
-                    <form className="form1">
-                   <input className="input4" type="text"placeholder="What's happening?" onChange={(e) => handleInputChange("content",e)} required min={8} max={255} /> 
-                   {<button type="submit" className="b5" onClick={handleSubmit}>Post </button>}
-                    </form>
-                </div>
+               
                 
             </div> 
              

@@ -15,22 +15,62 @@ import Dialog from './Dialog.js';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import MessageIcon from '@mui/icons-material/Message';
+import axios from 'axios';
 
 
 export default function RecipeReviewCard(props) {
   const [expanded, setExpanded] = React.useState(false);
-  
+  const token = localStorage.getItem('token'); 
+  const [datos, setDatos] = React.useState(null);
+  const [fetched, setFetched] = React.useState(false);
+  console.log("Este3", props.pop1)
 
-  
+  const id = props.pop1.id;
   const [toggle, setToggle] = React.useState(false);
   const toggleButton = () => setToggle(!toggle);
+
+
+  const toggle12 = (id) => {
+    setToggle(!toggle);
+  }
+   
+  const handleInputChange = () => {
+    postAPI(datos, setDatos);
+  };
+
+
+
+
+ const postAPI = (callback) => {  
+   let id = localStorage.getItem('id');
+   parseInt(id);  
+   let data = {
+      
+    };
+   const finalData = JSON.stringify(data);
+    const config = {
+        headers: { Authorization: `Bearer ${token}` }
+    }
+    const bodyParameters = {
+        key: 'value'
+    }
+     console.log({ data });
+     axios
+       .put(`https://h5bd.herokuapp.com/postlike/2`, data, config, bodyParameters)
+       .then((res) => {
+         callback(null);
+         setFetched(true);
+       })
+       .catch((err) => {
+         console.error(err);
+       });
+   }
   
-  const Item1 = (id) => {
-    console.log(id);
+  
    
   
   
-}
+
   return (
     <div>
      {     
@@ -51,24 +91,24 @@ export default function RecipeReviewCard(props) {
       />
       
       <CardContent >
-      <Typography variant="body" color="text.secondary">
+      <Typography padding={3}  fontSize={10} fontFamily={'Verdana, Geneva, Tahoma, sans-serif'} variant="body" color="#dd8411;">
             {u.createdAt}
         </Typography>
-        <Typography variant="body2" color="text.secondary">
+        <Typography padding={3} fontSize={14} fontFamily={'Verdana, Geneva, Tahoma, sans-serif'} variant="body2" color="text.secondary">
             {u.content}
         </Typography>
       </CardContent>
       <CardActions   className='icon3'disableSpacing>
-        <IconButton onClick={toggleButton} aria-label="add to favorites">
-          <FavoriteIcon onClick={()=>Item1(u.id)} style={{color: toggle ? '#FFF': '#000'}} />{u.likes}
+        <IconButton onClick={toggle12} aria-label="add to favorites">
+          <FavoriteIcon onClick={()=>handleInputChange(props.pop1.id)} style={{color: toggle ? '#FFF': '#000'}} />{u.likes}
         </IconButton>
         <IconButton className='icon3' aria-label="share">
-          
           <Dialog pop1={props.pop1}/>
         </IconButton>
        
       </CardActions>
     </Card>
+
                 </div>
               )
             }):"cargando"

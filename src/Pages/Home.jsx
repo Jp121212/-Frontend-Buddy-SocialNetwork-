@@ -22,53 +22,72 @@ const User = () => {
   const [Following, setFollowing] = React.useState(null);
   const [Followings, setFollowings] = React.useState(null);
  
-  useEffect(() => {
-    console.log("ID recibida otro componente:",dodi.id);
-    setData(dodi);
+  const id = localStorage.getItem('id');
+  console.log(id)
+  const token = localStorage.getItem('token');
+  console.log(token)
+  
+ 
+
+   React.useEffect(() => { 
+     const config = {
+        headers: { Authorization: `Bearer ${token}` }
+     };
+     const bodyParameters = {
+        key: 'value'
+     };
+      if(!User){
+      axios.get(`https://h5bd.herokuapp.com/user/${id}`, config, bodyParameters).
+      then((data)=> {
+        setUser(data.data);
+      }
+
+      )}
+   }, [User]);
     
-  },[dodi]); 
+   React.useEffect(() => { 
+    const config = {
+       headers: { Authorization: `Bearer ${token}` }
+    };
+    const bodyParameters = {
+       key: 'value'
+    };
+     if(!Following){
+     axios.get(`https://h5bd.herokuapp.com/following/${id}`, config, bodyParameters).
+     then((data)=> {
+       setFollowing(data.data);
+     }).catch((err)=> {
+        console.error(err);
+     }
 
+     )}
+  }, [Followings,Following]);
 
-   React.useEffect(() => {
-     if(!User){
-       axios.get(`http://localhost:5000/user/2`)
-         .then((res) => {
-           setUser(res.data)
-          console.log(res.data)
-        })
-    }
-   }, [])
+  React.useEffect(() => { 
+    const config = {
+       headers: { Authorization: `Bearer ${token}` }
+    };
+    const bodyParameters = {
+       key: 'value'
+    };
+     if(!Users){
+     axios.get(`https://h5bd.herokuapp.com/users`, config, bodyParameters).
+     then((data)=> {
+       setUsers(data.data);
+     }).catch((err)=> {
+        console.error(err);
+     }
 
-   React.useEffect(() => {
-    if(!Following){
-      axios.get("http://127.0.0.1:5000/following/2")
-        .then((data)=> {
-          setFollowing(data.data.reverse());
-        })
-        .catch((err)=> {
-          console.error(err);
-        })
-    }
-   
+     )}
+  }, []);
     
-  }, [Followings, Following]);
+  
 
 
-   React.useEffect(() => {
-    if(!Users){
-      axios.get(`http://localhost:5000/users`)
-        .then((res) => {
-          setUsers(res.data)
-         console.log(res.data)
-       })
-   }
-  }, [])
-
+ 
    
 
-  // const manejarClickLista = (id) => {
-  //   setEstudianteActivo(Estudiante.find((el) => el.id === id));
-  // }
+ 
 
   return(
     <div className='contenedorFlex' >

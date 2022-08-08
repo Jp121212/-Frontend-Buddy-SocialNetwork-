@@ -10,59 +10,78 @@ import MessageIcon from '@mui/icons-material/Message';
 import axios from 'axios';
 
 export default function AlertDialog(props) {
+  console.log("Este1", props.pop1.following)
   const [open, setOpen] = React.useState(false);
+  const id = localStorage.getItem('id');
+  const token = localStorage.getItem('token');
+  const [datos, setDatos] = React.useState(null);
+  const [fetched, setFetched] = React.useState(false);
+
 
   const handleClickOpen = () => {
     setOpen(true);
   };
-
-
-
-
-//   const handleInputChange = (type, e) => {
-
-//     let tempDatos = {
-//       userId: 2,
-//       content: datos?.content,
-//     };
-  
-//       if (type === "content") {
-//           tempDatos.content = e.target.value;
-//       }
-//       if (type === "userId") {
-//           tempDatos.userId = parseInt(e.target.value);
-//       }
-    
-//     setDatos(tempDatos);
-//     console.log(tempDatos);
-//   };
-
-//   const postAPI = (data, callback) => {
-//     // const finalData = JSON.stringify(data);
-//     console.log({ data });
-//     axios
-//       .post(`http://127.0.0.1:5000/comment/${props.pop1.id}`, data)
-//       .then((res) => {
-//         callback(null);
-//         setFetched(true);
-//       })
-//       .catch((err) => {
-//         console.error(err);
-//       });
-//   };
-
   const handleClose = () => {
     setOpen(false);
-  };
-//   const handleSubmit = () => {
-//     if(datos==null){
-//       alert("No se puede enviar un mensaje vacio")
+  }
 
-//     }else{
-//       postAPI(datos, setDatos);
-//     }
+
+
+
+   const handleInputChange = (type, e) => {
+     
+     let tempDatos = {
+       userId: parseInt(id),
+       content: datos?.content,
+       postId: parseInt(props.pop.id),
+     };
+  
+       if (type === "content") {
+           tempDatos.content = e.target.value;
+       }
+       if (type === "userId") {
+           tempDatos.userId = parseInt(e.target.value);
+      }
+      if (type === "postId") {
+            tempDatos.postId = parseInt(e.target.value);
+      }
     
-//   };
+     setDatos(tempDatos);
+     console.log(tempDatos);
+   };
+   const postAPI = (data, callback) => {
+    const finalData = JSON.stringify(data);
+     const config = {
+         headers: { Authorization: `Bearer ${token}` }
+     }
+     const bodyParameters = {
+         key: 'value'
+     }
+      console.log({ data });
+      axios
+        .post("https://h5bd.herokuapp.com/comments", data, config, bodyParameters)
+        .then((res) => {
+          callback(null);
+          setFetched(true);
+        })
+        .catch((err) => {
+          console.error(err);
+        });
+    };
+ 
+    const handleSubmit = () => {
+      if(datos==null){
+        alert("No se puede enviar un mensaje vacio")
+
+      }else{
+        postAPI(datos, setDatos);
+      }
+     
+    };
+ 
+
+
+   
 
   return (
     <div>
@@ -84,13 +103,13 @@ export default function AlertDialog(props) {
         
         <DialogContent>
             <div className='wi'>
-               <input placeholder='Hi5 your reply' className='input1' type="text"/> 
+               <input placeholder='Hi5 your reply' className='input1' type="text" onChange={(e) => handleInputChange("content",e)} required min={8} max={255} /> 
             </div>
            
         </DialogContent>
         <DialogActions>
           <button className='b68' onClick={handleClose}>close</button>
-          <button className='b67' onClick={handleClose} autoFocus>
+          <button className='b67' onClick={handleSubmit} autoFocus>
             comment
           </button>
         </DialogActions>

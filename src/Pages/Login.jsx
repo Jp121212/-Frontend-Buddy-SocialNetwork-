@@ -4,53 +4,57 @@ import "./Login.css";
 import {ApiUrl} from "../services/apirest";
 import axios from "axios";
 
-class Login extends React.Component {
+const Login = () => {
+const DataPost = async (url,data) => {
+   console.log('url',url);
+   const response = await axios.post(url,{
+        "email": data["email"],
+        "password": data["password"],
+   });
+   return response;
+}
 
-    state={
-        form:{
-            "email":"",
-            "password":""
-        },
-        error:false,
-        errorMessage:""
+const LogClickHandler = async (e) => {
+    e.preventDefault();
+    let email = document.getElementById("email").value;
+    let password = document.getElementById("password").value;
+    let data = await DataPost("https://h5bd.herokuapp.com/api/v1/login",{email,password});
+    console.log('data',data);
+    if(data.data){
+        console.log('data.data',data.data);
+        if (data.data.response!='Invalid password'){
+            console.log(data.data.response);
+            localStorage.setItem("message",data.data.message);
+            localStorage.setItem("id",data.data.id);
+            localStorage.setItem("token",data.data.token);
+            localStorage.setItem("email",email);
+            localStorage.setItem("imagen",data.data.imagen);
+            window.location.href = "/home";
 
-    }
-    
-    manejadorSubmit(e){
-        e.preventDefault();
-        
-    }
-
-    manejadorChange = async e=>{
-       await this.setState({
-          form:{
-                ...this.state.form,
-                [e.target.name]:e.target.value
-          }    
-       })
-       console.log(this.state.form);
-    }
-
-    manejadorBoton=()=>{
-        <a href="/home"></a>
-    }
-
-    render() {
-        return (
-        <React.Fragment>
-            <body className="html">
+            
+        }
+        if(data.data.response!='Invalid email'){
+            console.log(data.data.response);
+            localStorage.setItem("message",data.data.message);
+            localStorage.setItem("email",email);
+        }
+        else{
+            alert('Invalid password or email');
+        }
+    }}
+return (
+    <body className="html">
             <div className="wrapper fadeInDown">
                 <div id="formContent">
                 <div className="fadeIn first">
                 <img src="https://cdn-icons-png.flaticon.com/512/725/725335.png" id="icon" alt="User Icon" />
                 </div>
-                <form onSubmit={this.manejadorSubmit}>
-                <input type="email" id="email" className="fadeIn second" name="email" placeholder="email" onChange={this.manejadorChange}/>
-                <input type="password" id="password" className="fadeIn third" name="password" placeholder="password"  onChange={this.manejadorChange}/>
-                <a href="/home">
+                <form onSubmit={LogClickHandler}>
+                <input type="email" id="email" className="fadeIn second" name="email" placeholder="email"/>
+                <input type="password" id="password" className="fadeIn third" name="password" placeholder="password"/>
                   <input type="submit" className="fadeIn fourth" value="Log in"/>
-                </a>
-               
+                
+
                 </form>
                 <div id="formFooter">
                 <a className="underlineHover" href="/register">Register</a> <br></br>
@@ -59,8 +63,11 @@ class Login extends React.Component {
               </div>
            </div>
            </body>
-        </React.Fragment>
-    )}
+)
+
+
 };
 
 export default Login;
+
+

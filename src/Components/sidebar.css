@@ -77,6 +77,17 @@
     
   }
 
+  .p211{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: 100;
+    color: #bbbbbb;
+    font-size: 12px;
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+    
+  }
+
   .cardb{
     margin-left: 10px;
     width: 80%;

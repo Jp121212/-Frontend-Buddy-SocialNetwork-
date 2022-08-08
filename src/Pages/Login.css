@@ -267,3 +267,10 @@
     height:200px;
   }
   
+  .S2{
+    background-image: url("https://img.freepik.com/vector-gratis/fondo-acuarela-amarillo-abstracto_1055-8919.jpg?w=2000");
+    background-size: cover;
+    padding: 10px;
+    height: 200px;
+    border: #000000 solid 1px;
+  }
