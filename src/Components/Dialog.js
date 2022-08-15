@@ -10,7 +10,7 @@ import MessageIcon from '@mui/icons-material/Message';
 import axios from 'axios';
 
 export default function AlertDialog(props) {
-  console.log("Este1", props.pop1.following)
+ 
   const [open, setOpen] = React.useState(false);
   const id = localStorage.getItem('id');
   const token = localStorage.getItem('token');
@@ -20,7 +20,7 @@ export default function AlertDialog(props) {
 
   const handleClickOpen = () => {
     setOpen(true);
-  };
+  }
   const handleClose = () => {
     setOpen(false);
   }
@@ -29,11 +29,12 @@ export default function AlertDialog(props) {
 
 
    const handleInputChange = (type, e) => {
-     
+
+     const ids = localStorage.getItem('idComment');
      let tempDatos = {
        userId: parseInt(id),
        content: datos?.content,
-       postId: parseInt(props.pop.id),
+       postId: parseInt(ids),
      };
   
        if (type === "content") {
@@ -47,7 +48,8 @@ export default function AlertDialog(props) {
       }
     
      setDatos(tempDatos);
-     console.log(tempDatos);
+     console.log(tempDatos)
+     ;
    };
    const postAPI = (data, callback) => {
     const finalData = JSON.stringify(data);
@@ -75,6 +77,8 @@ export default function AlertDialog(props) {
 
       }else{
         postAPI(datos, setDatos);
+        handleClose();
+        
       }
      
     };

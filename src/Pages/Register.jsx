@@ -20,6 +20,7 @@ class Register extends React.Component {
     manejadorSubmit(e){
         e.preventDefault();
         
+        
     }
 
     manejadorChange = async e=>{
@@ -39,6 +40,8 @@ class Register extends React.Component {
             console.log(res);
         })  
     }
+
+
 
 
       

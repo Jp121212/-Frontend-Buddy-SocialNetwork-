@@ -8,11 +8,11 @@ import Stack from "@mui/material/Stack";
 
 
 export default function BadgeAvatars(props) {
-  console.log(props.pop.id);
+  
   return (
         <div>
            <Avatar1 style={{width:"80px" ,height:"80px"}} alt="Photo" src={props.pop.imagen} />
-           {props.pop.username}
+           
         </div>
         
         

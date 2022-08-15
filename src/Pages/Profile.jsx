@@ -6,7 +6,7 @@ import React from 'react';
 import Sidebar from '../Components/Sidebar';
 import Avatar from '../Components/Avatar';
 import CircularColor from '../Components/circularprogress';
-import Postprofile from './Postprofile.jsx';
+import Post from './Post.jsx';
 import Feed from '../Components/Feed';
 import Follows from '../Components/Follow';
 import Trends from '../Components/Trends';
@@ -53,7 +53,7 @@ const User = () => {
        key: 'value'
     };
      if(!Following){
-     axios.get(`https://h5bd.herokuapp.com/following/${id}`, config, bodyParameters).
+     axios.get(`https://h5bd.herokuapp.com/user/following/${id}`, config, bodyParameters).
      then((data)=> {
        setFollowing(data.data);
      }).catch((err)=> {
@@ -112,12 +112,27 @@ const User = () => {
       </div>
      
       <div className='ContenedorMain'> 
-        <Postprofile/>
-       
+        <Post/>
       </div>
       <div className='Contenedor3'>
         <p className='p23'>Trends for you</p>
         <Trends/>
+        <div className='abajo1'>
+          <p className='p22'>Who to follow</p>
+          {
+            Users ?
+            Users.map((u,i)=>{ 
+              return(
+                <div key={i}>
+                  <Follows pop={u}/>
+                
+                </div>
+              ) 
+
+            }):<CircularColor/>
+          }
+        </div>
+        
         </div>
         
       
@@ -126,3 +141,4 @@ const User = () => {
   );
 }
 export default User;
+

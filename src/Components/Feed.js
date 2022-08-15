@@ -16,55 +16,51 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import MessageIcon from '@mui/icons-material/Message';
 import axios from 'axios';
+import './sidebar.css';
+import moment from 'moment';
 
 
 export default function RecipeReviewCard(props) {
-  const [expanded, setExpanded] = React.useState(false);
-  const token = localStorage.getItem('token'); 
-  const [datos, setDatos] = React.useState(null);
-  const [fetched, setFetched] = React.useState(false);
-  console.log("Este3", props.pop1)
+  const token1 = localStorage.getItem('token'); 
+  const [like,setlike] = React.useState(null);
+  console.log("id", props.pop1)
 
-  const id = props.pop1.id;
+  
   const [toggle, setToggle] = React.useState(false);
-  const toggleButton = () => setToggle(!toggle);
+  const toggleButton = (id) => setToggle(!toggle);
 
-
-  const toggle12 = (id) => {
-    setToggle(!toggle);
-  }
-   
-  const handleInputChange = () => {
-    postAPI(datos, setDatos);
+  const handleInputChange = (id) => {
+    console.log("like id", id)
+    localStorage.setItem('idPost', id);
+    postAPI(like, setlike);
+    toggleButton(id);
   };
 
+  const handlereply = (id1) => {
+    console.log("reply id", id1)
+    localStorage.setItem('idComment', id1);
+  }
 
 
+ const postAPI = () => {
+     const id = localStorage.getItem('idPost');
+       const config = {
+           headers: { Authorization: `Bearer ${token1}` }
+       };
+       const bodyParameters = {
+           key: 'value'
+       };
+       if(!like){
+        axios.put(`https://h5bd.herokuapp.com/postlike/${id}`, bodyParameters, config).
+        then(res => {
+            setlike(res.data);}).catch(err => {
+            console.log(err);
+            })
+       }
+       
+      };
 
- const postAPI = (callback) => {  
-   let id = localStorage.getItem('id');
-   parseInt(id);  
-   let data = {
-      
-    };
-   const finalData = JSON.stringify(data);
-    const config = {
-        headers: { Authorization: `Bearer ${token}` }
-    }
-    const bodyParameters = {
-        key: 'value'
-    }
-     console.log({ data });
-     axios
-       .put(`https://h5bd.herokuapp.com/postlike/2`, data, config, bodyParameters)
-       .then((res) => {
-         callback(null);
-         setFetched(true);
-       })
-       .catch((err) => {
-         console.error(err);
-       });
-   }
+ 
   
   
    
@@ -86,45 +82,63 @@ export default function RecipeReviewCard(props) {
           </Avatar>
         }
         
-        title={props.pop1.username}
+        title={props.pop1.username}       
         
       />
       
       <CardContent >
       <Typography padding={3}  fontSize={10} fontFamily={'Verdana, Geneva, Tahoma, sans-serif'} variant="body" color="#dd8411;">
-            {u.createdAt}
+           { moment (u.createdAt).format('MMMM Do YYYY, h:mm:ss a')}
+   
         </Typography>
         <Typography padding={3} fontSize={14} fontFamily={'Verdana, Geneva, Tahoma, sans-serif'} variant="body2" color="text.secondary">
-            {u.content}
+          {u.content}
         </Typography>
       </CardContent>
       <CardActions   className='icon3'disableSpacing>
-        <IconButton onClick={toggle12} aria-label="add to favorites">
-          <FavoriteIcon onClick={()=>handleInputChange(props.pop1.id)} style={{color: toggle ? '#FFF': '#000'}} />{u.likes}
+        <IconButton size="small" aria-label="add to favorites" >
+          <FavoriteIcon onClick={()=>handleInputChange(u.id)} />{u.likes}
         </IconButton>
-        <IconButton className='icon3' aria-label="share">
-          <Dialog pop1={props.pop1}/>
+        <IconButton onClick={()=>handlereply(u.id)} className='icon3' aria-label="share">
+         <Dialog  pop1={props.pop1}/>
         </IconButton>
        
       </CardActions> 
-      <Card>
       <CardContent>
-      <Typography padding={3} fontSize={14} fontFamily={'Verdana, Geneva, Tahoma, sans-serif'} variant="body2" color="text.secondary">
-            {
-              u.comments.map((u,i)=>{
-                return(
-                  <div key={i}>
-                    <Typography padding={3} fontSize={14} fontFamily={'Verdana, Geneva, Tahoma, sans-serif'} variant="body2" color="text.secondary">
-                      {u.content}
-                    </Typography>
-                  </div>
-                )
-              })
-            }
-        </Typography>
-      </CardContent>
-      </Card>
-    </Card>
+            <p className='p21'>Replys</p>
+             {u.comments ? 
+             u.comments.map((e,i)=>{
+              return(
+                <div className='' key={i}><Card style={{backgroundColor: "black" }} className="card11"> 
+                   <CardHeader avatar={
+                      <Avatar   alt="Photo" src={e.user.imagen}  sx={{ bgcolor: red[500] }} aria-label="recipe">
+                   </Avatar>
+                    }
+                    
+                    title={
+                      <Typography  fontSize={12} fontFamily={'Verdana, Geneva, Tahoma, sans-serif'} variant="body2" color="orange">
+                        {'@'+e.user.username}
+                      </Typography>
+                    }
+                    subheader={
+                      <Typography  fontSize={10} fontFamily={'Verdana, Geneva, Tahoma, sans-serif'} variant="body2" color='white'>
+                        { moment (e.user.createdAt).format('MMMM Do YYYY, h:mm:ss a')}
+                      </Typography>
+                    }
+                      
+                    />
+                  <Typography padding={3} fontSize={12} fontFamily={'Verdana, Geneva, Tahoma, sans-serif'} variant="body2" color="#ffff">
+                   {e.content}
+                  </Typography>
+                  </Card>
+                    <div>
+                   </div>
+                 </div> 
+              )
+             }):null}
+            </CardContent>
+    </Card> 
+   
      
 
 

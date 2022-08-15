@@ -67,7 +67,7 @@ const App = (props) => {
          key: 'value'
       };
        if(!userss){
-       axios.get(`http://localhost:5000/user/post/${id}`, config, bodyParameters).
+       axios.get(`https://h5bd.herokuapp.com/user/post/${id}`, config, bodyParameters).
        then((data)=> {
          setuserss(data.data);
        }).catch((err)=> {
@@ -106,7 +106,7 @@ const App = (props) => {
       }
        console.log({ data });
        axios
-         .post("http://127.0.0.1:5000/post", data, config, bodyParameters)
+         .post("https://h5bd.herokuapp.com/post", data, config, bodyParameters)
          .then((res) => {
            callback(null);
            setFetched(true);

@@ -63,6 +63,17 @@
     margin-top: 20px;
   }
 
+  .card11{
+    margin-top: 10px;
+    width: 100%;
+    height: 50%;
+    color: #bbbbbb;
+    font-size: 10px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    
+  }
+  
+
   .bt5{
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     background-color: #dd8411;
@@ -134,6 +145,7 @@
     margin-top: 10px;
     float: right;
     margin-left: 10px;
+    height: 20px;
   }
 
   .input1{
@@ -188,4 +200,38 @@
     border-radius: 10px;
   }
    
-  
+  .p111{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: 100;
+    color: #b93c3c;
+    font-size: 12px;
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+
+  .Card1{
+    width: 100%;
+    height: 20%;
+    border-radius: 20px;
+    box-shadow: 0 0 6px rgb(72, 108, 136);
+    padding: 10px;
+    margin-top: 20px;
+    background-color: #dd8411;
+  }
+
+  .pepe{
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    box-shadow: 0 0 6px hsl(210 14% 90%);
+    padding: 10px;
+    margin-top: 10px;
+
+  }
+
+  .orange{
+    color: #dd8411;
+    font-size: 12px;
+    
+  }

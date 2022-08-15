@@ -11,6 +11,7 @@ import Feed from '../Components/Feed';
 import Follows from '../Components/Follow';
 import Trends from '../Components/Trends';
 import FeedFollow from '../Components/FeedFollow';
+import Avatar1 from '../Components/Avatar1';
 
 const User = () => {
   const [User, setUser] = React.useState(null);
@@ -21,6 +22,8 @@ const User = () => {
   const [data, setData] = useState(null);
   const [Following, setFollowing] = React.useState(null);
   const [Followings, setFollowings] = React.useState(null);
+  const [datos, setDatos] = React.useState(null);
+  const [fetched, setFetched] = React.useState(false);
  
   const id = localStorage.getItem('id');
   console.log(id)
@@ -53,7 +56,7 @@ const User = () => {
        key: 'value'
     };
      if(!Following){
-     axios.get(`https://h5bd.herokuapp.com/following/${id}`, config, bodyParameters).
+     axios.get(`https://h5bd.herokuapp.com/user/following/${id}`, config, bodyParameters).
      then((data)=> {
        setFollowing(data.data);
      }).catch((err)=> {
@@ -80,6 +83,54 @@ const User = () => {
 
      )}
   }, []);
+  const handleInputChange = (type, e) => {
+    let id = localStorage.getItem('id');
+    parseInt(id);
+     let tempDatos = {
+       userId: parseInt(id),
+       content: datos?.content,
+     };
+   
+       if (type === "content") {
+           tempDatos.content = e.target.value;
+       }
+       if (type === "userId") {
+           tempDatos.userId = parseInt(e.target.value);
+       }
+     
+     setDatos(tempDatos);
+     console.log(tempDatos);
+   };
+ 
+   const postAPI = (data, callback) => {
+    const finalData = JSON.stringify(data);
+     const config = {
+         headers: { Authorization: `Bearer ${token}` }
+     }
+     const bodyParameters = {
+         key: 'value'
+     }
+      console.log({ data });
+      axios
+        .post("https://h5bd.herokuapp.com/post", data, config, bodyParameters)
+        .then((res) => {
+          callback(null);
+          setFetched(true);
+        })
+        .catch((err) => {
+          console.error(err);
+        });
+    };
+ 
+    const handleSubmit = () => {
+      if(datos==null){
+        alert("No se puede enviar un mensaje vacio")
+
+      }else{
+        postAPI(datos, setDatos);
+      }
+     
+    };
     
   
 
@@ -112,7 +163,31 @@ const User = () => {
       </div>
      
       <div className='ContenedorMain'> 
-        <Post/>
+      <div className="tweetBox__input"> 
+            <div className="flex">
+                <div className="avatar">
+                                {
+                        User ?
+                        User.map((u,i)=>{ 
+                        return(
+                            <div key={i}>
+                            <Avatar1 className="avatar11" pop={u}/>
+                            </div>
+                        ) 
+
+                        }):"cargando"
+                    }
+                </div>
+                <div className="border">
+                    <form className="form1">
+                   <input className="input4" type="text"placeholder="What's happening?" onChange={(e) => handleInputChange("content",e)} required min={8} max={255} /> 
+                   {<button type="submit" className="b5" onClick={handleSubmit}>Post </button>}
+                    </form>
+                </div>
+                
+            </div> 
+             
+        </div>
         <div className='abajo1'>
           <p className='p22'>Your follows</p>
           {
