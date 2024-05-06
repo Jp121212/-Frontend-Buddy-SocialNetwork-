@@ -17,7 +17,6 @@ import moment from 'moment';
 export default function RecipeReviewCard1(props) {
   const token1 = localStorage.getItem('token'); 
   const [like,setlike] = React.useState(null);
-  console.log("Prueba", props.pop2.following)
    
   const [toggle, setToggle] = React.useState(false);
   const toggleButton = (id) => setToggle(!toggle);
@@ -30,7 +29,6 @@ export default function RecipeReviewCard1(props) {
   }
 
   const handlereply = (id1) => {
-    console.log("reply id", id1)
     localStorage.setItem('idComment', id1);
   }
   
@@ -43,7 +41,7 @@ export default function RecipeReviewCard1(props) {
             key: 'value'
         };
         if(!like){
-          axios.put(`https://h5bd.herokuapp.com/postlike/${id}`, bodyParameters, config).
+          axios.put(`http://localhost:5000/postlike/${id}`, bodyParameters, config).
           then(res => {
               setlike(res.data);}).catch(err => {
               console.log(err);

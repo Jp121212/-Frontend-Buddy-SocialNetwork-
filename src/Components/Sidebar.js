@@ -7,7 +7,7 @@ import MailOutlineIcon from '@mui/icons-material/MailOutline';
 import PermIdentityIcon from '@mui/icons-material/PermIdentity';
 import LogoutIcon from '@mui/icons-material/Logout';
 import Link from '@mui/material/Link';
-
+import image from '../Assets/buddyfont.png';
 
 
 
@@ -15,7 +15,7 @@ function Sidebar(){
     
   return(
     <div className="sidebar">
-        <img src="https://cdn-icons-png.flaticon.com/512/725/725335.png" className="icon" alt="hi5 Icon" />
+        <img src={image} className="icon" alt="hi5 Icon" />
         <SidebarLink text="Home" Icon={HomeOutlinedIcon} href="/Home"/>
         <SidebarLink text="Personalize" Icon={ColorLensOutlinedIcon}/>
         <SidebarLink text="Notifications" Icon={NotificationsNoneIcon} />

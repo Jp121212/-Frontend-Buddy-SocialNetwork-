@@ -37,7 +37,7 @@ const User = () => {
         key: 'value'
      };
       if(!User){
-      axios.get(`https://h5bd.herokuapp.com/user/${id}`, config, bodyParameters).
+      axios.get(`http://localhost:5000/user/${id}`, config, bodyParameters).
       then((data)=> {
         setUser(data.data);
       }
@@ -53,7 +53,7 @@ const User = () => {
        key: 'value'
     };
      if(!Following){
-     axios.get(`https://h5bd.herokuapp.com/user/following/${id}`, config, bodyParameters).
+     axios.get(`http://localhost:5000/user/following/${id}`, config, bodyParameters).
      then((data)=> {
        setFollowing(data.data);
      }).catch((err)=> {
@@ -71,7 +71,7 @@ const User = () => {
        key: 'value'
     };
      if(!Users){
-     axios.get(`https://h5bd.herokuapp.com/users`, config, bodyParameters).
+     axios.get(`http://localhost:5000/users`, config, bodyParameters).
      then((data)=> {
        setUsers(data.data);
      }).catch((err)=> {

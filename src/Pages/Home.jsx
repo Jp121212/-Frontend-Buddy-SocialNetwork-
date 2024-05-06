@@ -26,9 +26,7 @@ const User = () => {
   const [fetched, setFetched] = React.useState(false);
  
   const id = localStorage.getItem('id');
-  console.log(id)
   const token = localStorage.getItem('token');
-  console.log(token)
   
  
 
@@ -40,7 +38,7 @@ const User = () => {
         key: 'value'
      };
       if(!User){
-      axios.get(`https://h5bd.herokuapp.com/user/${id}`, config, bodyParameters).
+      axios.get(`http://localhost:5000/user/${id}`, config, bodyParameters).
       then((data)=> {
         setUser(data.data);
       }
@@ -56,11 +54,10 @@ const User = () => {
        key: 'value'
     };
      if(!Following){
-     axios.get(`https://h5bd.herokuapp.com/user/following/${id}`, config, bodyParameters).
+     axios.get(`http://localhost:5000/user/following/${id}`, config, bodyParameters).
      then((data)=> {
        setFollowing(data.data);
      }).catch((err)=> {
-        console.error(err);
      }
 
      )}
@@ -74,11 +71,10 @@ const User = () => {
        key: 'value'
     };
      if(!Users){
-     axios.get(`https://h5bd.herokuapp.com/users`, config, bodyParameters).
+     axios.get(`http://localhost:5000/users`, config, bodyParameters).
      then((data)=> {
        setUsers(data.data);
      }).catch((err)=> {
-        console.error(err);
      }
 
      )}
@@ -99,7 +95,6 @@ const User = () => {
        }
      
      setDatos(tempDatos);
-     console.log(tempDatos);
    };
  
    const postAPI = (data, callback) => {
@@ -112,13 +107,12 @@ const User = () => {
      }
       console.log({ data });
       axios
-        .post("https://h5bd.herokuapp.com/post", data, config, bodyParameters)
+        .post("http://localhost:5000/post", data, config, bodyParameters)
         .then((res) => {
           callback(null);
           setFetched(true);
         })
         .catch((err) => {
-          console.error(err);
         });
     };
  

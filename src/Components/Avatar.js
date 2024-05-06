@@ -41,7 +41,6 @@ const SmallAvatar = styled(Avatar)(({ theme }) => ({
 }));
 
 export default function BadgeAvatars(props) {
-  console.log(props.pop.id);
   return (
     <Stack direction="row" spacing={2}>
       <StyledBadge

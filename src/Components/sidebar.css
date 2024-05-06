@@ -2,15 +2,13 @@
     width: 150px;
     min-width: 250px;
     padding: 20px 20px;
-    box-shadow: 0 0 6px hsl(210 14% 90%);
     margin-right: 4px;
    
       }
 
 .icon{
- width: 60px;
- height: 80px;
- margin-left: 20px;
+ width: 150px;
+ height: 150px;
 }
 
 .b1{
@@ -129,7 +127,7 @@
   .p22{
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-weight: 100;
-    color: #bbbbbb;
+    color: #000000;
     font-size: 15px;
     margin: auto;
     margin-left: 10px;
@@ -148,8 +146,9 @@
     height: 20px;
   }
 
-  .input1{
-    height: 100px;
+  .input12{
+    height: 140px;
+    width: 80%;
   }
 
   .b67{
@@ -158,6 +157,7 @@
     border: none;
     padding: 10px;
     color: #f5f5f5;
+    width: 50%;
     font-size: 12px;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
   }
@@ -165,6 +165,7 @@
   .b68{
     background-color: #dd8411;
     border: none;
+    width: 50%;
     padding: 10px;
     border-radius: 10px;
     color: white;
@@ -173,8 +174,8 @@
   }
 
   .icon10{
-    width: 60px;
-    height: 60px;
+    width: 100px;
+    height: 140px;
     padding: 10px;
   }
 

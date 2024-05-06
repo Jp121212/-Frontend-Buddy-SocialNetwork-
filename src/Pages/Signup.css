@@ -5,7 +5,7 @@
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     height: 100vh;
     background-size: cover;
-    background-image: url("https://img.freepik.com/vector-gratis/fondo-acuarela-amarillo-abstracto_1055-8919.jpg?w=2000");
+    background-image: url("/src/Assets/5804273.jpg");
   }
   
  
@@ -128,7 +128,6 @@
     display: inline-block;
     font-size: 16px;
     margin: 10px;
-    width: 60%;
     border: 2px solid #f6f6f6;
     -webkit-transition: all 0.5s ease-in-out;
     -moz-transition: all 0.5s ease-in-out;

@@ -51,7 +51,7 @@ export default function RecipeReviewCard(props) {
            key: 'value'
        };
        if(!like){
-        axios.put(`https://h5bd.herokuapp.com/postlike/${id}`, bodyParameters, config).
+        axios.put(`http://localhost:5000/postlike/${id}`, bodyParameters, config).
         then(res => {
             setlike(res.data);}).catch(err => {
             console.log(err);

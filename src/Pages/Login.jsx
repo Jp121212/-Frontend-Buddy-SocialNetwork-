@@ -1,12 +1,11 @@
 import React from "react";
 //css
 import "./Login.css";
-import {ApiUrl} from "../services/apirest";
 import axios from "axios";
+import img  from '../Assets/buddywhite.png'
 
 const Login = () => {
 const DataPost = async (url,data) => {
-   console.log('url',url);
    const response = await axios.post(url,{
         "email": data["email"],
         "password": data["password"],
@@ -18,12 +17,9 @@ const LogClickHandler = async (e) => {
     e.preventDefault();
     let email = document.getElementById("email").value;
     let password = document.getElementById("password").value;
-    let data = await DataPost("https://h5bd.herokuapp.com/api/v1/login",{email,password});
-    console.log('data',data);
+    let data = await DataPost("http://localhost:5000/api/v1/login",{email,password});
     if(data.data){
-        console.log('data.data',data.data);
         if (data.data.response!='Invalid password'){
-            console.log(data.data.response);
             localStorage.setItem("message",data.data.message);
             localStorage.setItem("id",data.data.id);
             localStorage.setItem("token",data.data.token);
@@ -34,7 +30,6 @@ const LogClickHandler = async (e) => {
             
         }
         if(data.data.response!='Invalid email'){
-            console.log(data.data.response);
             localStorage.setItem("message",data.data.message);
             localStorage.setItem("email",email);
         }
@@ -47,7 +42,7 @@ return (
             <div className="wrapper fadeInDown">
                 <div id="formContent">
                 <div className="fadeIn first">
-                <img src="https://cdn-icons-png.flaticon.com/512/725/725335.png" id="icon" alt="User Icon" />
+                <img className="ImgLog" src={img} id="icon" alt="User Icon" />
                 </div>
                 <form onSubmit={LogClickHandler}>
                 <input type="email" id="email" className="fadeIn second" name="email" placeholder="email"/>

@@ -3,6 +3,7 @@ import React from "react";
 import "./Signup.css";
 import {ApiUrl} from "../services/apirest";
 import axios from "axios";
+import img from "../Assets/buddywhite.png";
 
 class Register extends React.Component {
 
@@ -30,11 +31,10 @@ class Register extends React.Component {
                 [e.target.name]:e.target.value
           }    
        })
-       console.log(this.state.form);
     }
 
     manejadorBoton=()=>{
-        let url = ApiUrl+"/users";
+        let url = ApiUrl+"/Signup";
         axios.post(url,this.state.form)
         .then(res=>{
             console.log(res);
@@ -53,7 +53,7 @@ class Register extends React.Component {
             <div className="wrapper fadeInDown">
                 <div id="formContent">
                 <div className="fadeIn first">
-                <img src="https://cdn-icons-png.flaticon.com/512/725/725335.png" id="icon" alt="User Icon" />
+                <img src={img} id="icon" alt="User Icon" />
                 </div>
                 <form onSubmit={this.manejadorSubmit}>
                 <input type="text" id="username" className="fadeIn second" name="username" placeholder="username" onChange={this.manejadorChange} min="5" max="20" required />

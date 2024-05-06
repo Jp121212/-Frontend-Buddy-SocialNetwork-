@@ -28,7 +28,7 @@ const App = (props) => {
          key: 'value'
       };
        if(!User){
-       axios.get(`https://h5bd.herokuapp.com/user/${id}`, config, bodyParameters).
+       axios.get(`http://localhost:5000/user/${id}`, config, bodyParameters).
        then((data)=> {
          setUser(data.data);
        }).catch((err)=> {
@@ -46,7 +46,7 @@ const App = (props) => {
          key: 'value'
       };
        if(!Post){
-       axios.get(`https://h5bd.herokuapp.com/user/post/${id}`, config, bodyParameters).
+       axios.get(`http://localhost:5000/user/post/${id}`, config, bodyParameters).
        then((data)=> {
          setPost(data.data.reverse());
        }).catch((err)=> {
@@ -67,7 +67,7 @@ const App = (props) => {
          key: 'value'
       };
        if(!userss){
-       axios.get(`https://h5bd.herokuapp.com/user/post/${id}`, config, bodyParameters).
+       axios.get(`http://localhost:5000/user/post/${id}`, config, bodyParameters).
        then((data)=> {
          setuserss(data.data);
        }).catch((err)=> {
@@ -93,7 +93,6 @@ const App = (props) => {
         }
       
       setDatos(tempDatos);
-      console.log(tempDatos);
     };
   
     const postAPI = (data, callback) => {
@@ -106,7 +105,7 @@ const App = (props) => {
       }
        console.log({ data });
        axios
-         .post("https://h5bd.herokuapp.com/post", data, config, bodyParameters)
+         .post("http://localhost:5000/post", data, config, bodyParameters)
          .then((res) => {
            callback(null);
            setFetched(true);

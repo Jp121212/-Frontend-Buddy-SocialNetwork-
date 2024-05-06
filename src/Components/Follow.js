@@ -6,75 +6,81 @@ import Stack from "@mui/material/Stack";
 import Card from "@mui/material/Card";
 import axios from "axios";
 
-
 const SmallAvatar = styled(Avatar)(({ theme }) => ({
   width: 30,
   height: 30,
-  border: `1px solid ${theme.palette.background.paper}`
+  border: `1px solid ${theme.palette.background.paper}`,
 }));
 
 export default function BadgeAvatars(props) {
-
-  const [toggle, setToggle] = React.useState(false);
+  const [following, setFollowing] = React.useState(false);
   const id = localStorage.getItem("id");
-  const token = localStorage.getItem('token'); 
-  const [datos, setDatos] = React.useState(null);
-  const [fetched, setFetched] = React.useState(false);
-   
-  const handleInputChange = () => {
-     postAPI(datos, setDatos);
-   };
+  const token = localStorage.getItem("token");
 
- 
-
-
-  const postAPI = (callback) => {  
-    let id = localStorage.getItem('id');
-    parseInt(id);  
-    let data = {
-       followerId: parseInt(id),
-       followingId: parseInt(props.pop.id),
-     };
-    const finalData = JSON.stringify(data);
-     const config = {
-         headers: { Authorization: `Bearer ${token}` }
-     }
-     const bodyParameters = {
-         key: 'value'
-     }
-      console.log({ data });
-      axios
-        .post(`https://h5bd.herokuapp.com/follows`, data, config, bodyParameters)
-        .then((res) => {
-          callback(null);
-          setFetched(true);
-        })
-        .catch((err) => {
-          console.error(err);
+  React.useEffect(() => {
+    const fetchFollowing = async () => {
+      try {
+        const response = await axios.get(`http://localhost:5000/follows/${id}`, {
+          headers: { Authorization: `Bearer ${token}` },
         });
+        const followingIds = response.data.map((follow) => follow.following.id);
+        setFollowing(followingIds.includes(props.pop.id));
+      } catch (error) {
+        console.error("Error al obtener seguimiento:", error);
+      }
+    };
+
+    fetchFollowing();
+  }, [id, token, props.pop.id]);
+
+  const handleToggleFollow = async () => {
+    try {
+      if (following) {
+        // Si ya está siguiendo al usuario, dejar de seguir
+        await axios.delete(`http://localhost:5000/follow/${props.pop.id}`, {
+          headers: { Authorization: `Bearer ${token}` },
+        });
+      } else {
+        // Si no está siguiendo al usuario, comenzar a seguir
+        await axios.post(
+          "http://localhost:5000/follows",
+          { followerId: parseInt(id), followingId: parseInt(props.pop.id) },
+          {
+            headers: { Authorization: `Bearer ${token}` },
+          }
+        );
+      }
+      setFollowing(!following);
+    } catch (error) {
+      console.error("Error al cambiar el seguimiento:", error);
     }
-  
-     
-    
-
-  
-
-  const [pop, setPop] = React.useState(null);
-  const [pops, setPops] = React.useState(null);
-  
- 
-
+  };
 
   return (
-    <Card style={{backgroundColor: "black" }} className="cardb">
-    <Stack   direction="row" spacing={2}>
-      
-        
-      
-        <Avatar  alt="Photo" src={props.pop.imagen} />
-         <div className="p4">{props.pop.username}<br></br><p className="p5">@{props.pop.username}</p> <button id="bt" onClick={()=>handleInputChange(props.pop.id)} style={{background: toggle ? '#FFFF': '#dd8411' , fontFamily: 'verdana', padding: '1px', fontSize: '12px', borderRadius: '5px',marginTop: '10px'}}>Follow</button></div>
-         
-      
-    </Stack></Card>
+    <Card style={{ backgroundColor: "black" }} className="cardb">
+      <Stack direction="row" spacing={3}>
+        <Avatar alt="Photo" src={props.pop.imagen} />
+        <div className="p4">
+          {props.pop.username}
+          <br></br>
+          <p className="p5">@{props.pop.username}</p>{" "}
+          <button
+            id="bt"
+            onClick={handleToggleFollow}
+            style={{
+              border: "none",
+              background: following ? "#FFFF" : "#dd8411",
+              fontFamily: "verdana",
+              padding: "1px",
+              fontSize: "12px",
+              borderRadius: "5px",
+              marginTop: "10px",
+            }}
+          >
+            {following ? "Unfollow" : "Follow"}
+          </button>
+        </div>
+      </Stack>
+    </Card>
   );
 }

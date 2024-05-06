@@ -5,7 +5,7 @@
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     height: 100vh;
     background-size: cover;
-    background-image: url("https://img.freepik.com/vector-gratis/fondo-acuarela-amarillo-abstracto_1055-8919.jpg?w=2000");
+    background-image: url("/src/Assets/5804273.jpg");
   }
   
  
@@ -129,7 +129,6 @@
     display: inline-block;
     font-size: 16px;
     margin: 10px;
-    width: 60%;
     border: 2px solid #f6f6f6;
     -webkit-transition: all 0.5s ease-in-out;
     -moz-transition: all 0.5s ease-in-out;
@@ -268,7 +267,7 @@
   }
   
   .S2{
-    background-image: url("https://img.freepik.com/vector-gratis/fondo-acuarela-amarillo-abstracto_1055-8919.jpg?w=2000");
+    background-image: url("https://img.freepik.com/vector-gratis/fondo-acuarela-abstracta_23-2149069668.jpg?w=1380&t=st=1714970160~exp=1714970760~hmac=d69ca4323e5c3806710bfdaa0c1d556ef3511e4a03c79ade9eeaa9e570a75a63");
     background-size: cover;
     padding: 10px;
     height: 200px;

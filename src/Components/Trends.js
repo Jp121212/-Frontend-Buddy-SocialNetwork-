@@ -21,7 +21,7 @@ export default function InsetDividers() {
    
     <List
       sx={{
-        width: '50%',
+        width: '100%',
         maxWidth: 360,
         bgcolor: 'black',
         color: 'white',
@@ -37,28 +37,28 @@ export default function InsetDividers() {
         </ListItemAvatar>
     
             <p className='p10'>VideoGames </p><br></br>
-            <p className='p11'>320k hi5</p> 
+            <p className='p11'>320k buddyNews</p> 
       </ListItem>
       <ListItem>
         <ListItemAvatar>
             <ShoppingCartIcon />
         </ListItemAvatar>
             <p className='p10'>Shopping </p><br></br>
-            <p className='p11'>120.5k hi5</p> 
+            <p className='p11'>120.5k buddyNews</p> 
       </ListItem>
       <ListItem>
         <ListItemAvatar>
             <AttachMoneyIcon />
         </ListItemAvatar>
         <p className='p10'> Inflation </p><br></br>
-        <p className='p11'>220.8k hi5</p> 
+        <p className='p11'>220.8k buddyNews</p> 
       </ListItem>
       <ListItem>
         <ListItemAvatar>
             <PeopleIcon />
         </ListItemAvatar>
         <p className='p10'> People </p><br></br>
-        <p className='p11'>110.8k hi5</p> 
+        <p className='p11'>110.8k buddyNews</p> 
         
       </ListItem>
       <ListItem>
@@ -66,15 +66,15 @@ export default function InsetDividers() {
             <MonitorHeartIcon />
         </ListItemAvatar>
         <p className='p10'> Health </p><br></br>
-        <p className='p11'>210.1k hi5</p> 
+        <p className='p11'>210.1k buddyNews</p> 
         
       </ListItem>
       <ListItem>
         <ListItemAvatar>
             <LocalFireDepartmentIcon />
         </ListItemAvatar>
-        <p className='p10'> Hot hi5 </p><br></br>
-        <p className='p11'>210.1k hi5</p> 
+        <p className='p10'> Hot </p><br></br>
+        <p className='p11'>210.1k buddyNews</p> 
       </ListItem>
       <Divider variant="inset" component="li" />
       <ListItem>
@@ -84,7 +84,7 @@ export default function InsetDividers() {
           
         </ListItemAvatar>
         <p className='p10'> Work </p><br></br>
-        <p className='p11'>310.5k hi5</p> 
+        <p className='p11'>310.5k buddyNews</p> 
       </ListItem>
       <Divider variant="inset" component="li" />
       <ListItem>
@@ -92,7 +92,7 @@ export default function InsetDividers() {
             <SportsSoccerIcon/>
         </ListItemAvatar>
         <p className='p10'> Health </p><br></br>
-        <p className='p11'>210.1k hi5</p> 
+        <p className='p11'>210.1k buddyNews</p> 
       </ListItem>
     </List>
   );
